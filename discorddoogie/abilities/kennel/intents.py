@@ -5,7 +5,6 @@ from pyttman.core.entity_parsing.fields import TextEntityField, \
     BoolEntityField, IntEntityField, StringEntityField
 from discorddoogie.abilities.kennel.models import Dog
 from pyttman import app
-import mongoengine
 
 #from discorddoogie.abilities.talk import Talk
 
@@ -14,7 +13,6 @@ class AddDog(Intent):
 
     dog_name = TextEntityField(span=5)
     def respond(self, message: Message) -> Reply | ReplyStream:
-        mongoengine.connect(**app.settings.DATABASE)
         dog_name = message.entities["dog_name"]
 
         Dog(name=dog_name, age="2", number_of_recieved_headpats=1).save()
@@ -26,7 +24,6 @@ class Pet(Intent):
 
     dog_name = TextEntityField(span=5)
     def respond(self, message: Message) -> Reply | ReplyStream:
-        mongoengine.connect(**app.settings.DATABASE)
         dog_name = message.entities["dog_name"]
 
         the_dog = Dog.objects(name=dog_name).first()

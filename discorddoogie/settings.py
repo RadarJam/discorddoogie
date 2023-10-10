@@ -77,10 +77,10 @@ DB_NAMN="kennel"
 
 DATABASE = {
     "db": os.getenv("MONGO_DB_DATABASENAME", "kennel"),  # Configured in app lifecycle hook 'before_start', app.py
-    "host": os.getenv("MONGO_DB_URL", "mongodb://localhost"),
+    "host": os.getenv("MONGO_DB_URL", "127.0.0.1"),
     "username": os.getenv("MONGO_DB_USER",""),
     "password": os.getenv("MONGO_DB_PASSWORD", ""),
-    "port": int(os.getenv("MONGO_DB_PORT", 27017)),
+    "port": int(os.getenv("MONGO_DB_PORT", "27017")),
 }
 
 # Define the client which your Pyttman app uses as its front end here.
